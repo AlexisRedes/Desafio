@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import obtenerAlbums from '../api/obtenerAlbums';
 import obtenerArtistas from '../api/obetenerArtistas';
 import SimplePopover from '../components/popover';
-import { Link } from  "react-router-dom";
+
 
 const Detalles = ({token,venrificacion}) => {
 

@@ -1,8 +1,5 @@
 const isValid = async (token) =>{
 
-    
-    const id = '0oSGxfWSnnOXhD2fKuz2Gy'
-
     const data = await fetch(`https://api.spotify.com/v1/search?q=michel&type=artist`, {
         method: 'GET',
         headers: new Headers({

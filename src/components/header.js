@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useEffect} from 'react'
 import styled from '@emotion/styled';
 import { Link } from  "react-router-dom";
 import logo from '../image/imagen.png'

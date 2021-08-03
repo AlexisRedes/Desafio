@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import obetenerArtistas from '../api/obetenerArtistas';
-import obtenerAlbunes from '../api/obtenerAlbums';
 import { Link } from 'react-router-dom';
 // import styled from '@emotion/styled';
 

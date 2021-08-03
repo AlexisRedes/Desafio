@@ -1,5 +1,5 @@
-import React,{useState} from 'react';
-import { Redirect, Link } from "react-router-dom";
+import React from 'react';
+import {Link } from "react-router-dom";
 import isValid from '../utils/verificador';
 import imagen from '../image/image2.png'
 

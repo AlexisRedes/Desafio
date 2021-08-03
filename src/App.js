@@ -1,16 +1,16 @@
-import React,{useState,useEffect} from 'react';
+import {useEffect} from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import Home from './pages/home';
 import Buscador from './components/buscador';
 import Detalles from './pages/detalles';
 import Header from './components/header';
 import Auth from './components/auth';
-import css from './App.css'
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 const artistasPrincipales = [
@@ -37,8 +37,8 @@ const ContenedorIndex1 = styled.div`
 
 function App() {
 
-  const [venrificacion, setVerificacion] = useState(false)
-  const [habilitaciones, setHabilitaciones] =useState(false)
+  
+  const [habilitaciones, setHabilitaciones] =useState()
   const [token, setToken] = useState({
     token:''
   })
@@ -53,6 +53,7 @@ function App() {
     console.log(idArtistas)
 
   },[])
+  const [venrificacion, setVerificacion] = useState()
 
   return (
 

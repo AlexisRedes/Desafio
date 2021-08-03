@@ -22,7 +22,7 @@ export default function SimplePopover({ generos }) {
     };
     return (
         <div>
-            <button type="button" class="btn btn-dark" onClick={openPopover}>Generos</button>
+            <button type="button" className="btn btn-dark" onClick={openPopover}>Generos</button>
             <Popover
                 open={Boolean(anchorEl)}
                 anchorEl={anchorEl}
