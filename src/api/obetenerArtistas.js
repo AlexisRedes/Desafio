@@ -1,11 +1,10 @@
-import token from './token'
-const obtenerArtistas = async (id) => {
-    
 
+const obtenerArtistas = async (id, token) => {
+    
     const data = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
         method: 'GET',
         headers: new Headers({
-            'Authorization': 'Bearer ' + token()
+            'Authorization': 'Bearer ' + token?.token
         }),
     })
     const artista = await data.json()

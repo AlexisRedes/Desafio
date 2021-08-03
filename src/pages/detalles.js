@@ -5,23 +5,30 @@ import obtenerArtistas from '../api/obetenerArtistas';
 import SimplePopover from '../components/popover';
 import { Link } from  "react-router-dom";
 
-const Detalles = () => {
+const Detalles = ({token,venrificacion}) => {
 
     const [artista, setArtista] = useState()
     const [albums, setAlbums] = useState();
     const {id} = useParams();
 
     useEffect(async()=>{
-        const artista =await obtenerArtistas(id);
-        setArtista(artista)
-        const albums = await obtenerAlbums(artista?.name)
-        setAlbums(albums);
+        try{
+            const artista =await obtenerArtistas(id,token);
+            setArtista(artista)
+            const albums = await obtenerAlbums(artista?.name,token)
+            setAlbums(albums);
+        }
+        catch(error){
+            console.log(error)
+        }
+        
     },[])
 
 
 
     return (
-        <div className='container  mt-5'>
+       <>
+            {venrificacion? <div className='container  mt-5'>
             <div className='row'>
                 <div className='col mt-5'>
                         <div className='container d-flex justify-content-center h-100'>
@@ -57,7 +64,8 @@ const Detalles = () => {
                 </div>
                 
             </div>
-        </div>
+        </div>:<h1 class="alert alert-danger">Usted no tiene acceso a esta pagina</h1>}
+       </>
         
     )
 }

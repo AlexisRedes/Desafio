@@ -1,15 +1,15 @@
 import funcion from '../utils/index'
-import token from './token'
 
 
-const buscarArtista = async (nombre) => {
+
+const buscarArtista = async (nombre,token) => {
 
     const artista = funcion(nombre);
     
     const data = await fetch(`https://api.spotify.com/v1/search?q=${artista}&type=artist`, {
         method: 'GET',
         headers: new Headers({
-            'Authorization': 'Bearer ' + token()
+            'Authorization': 'Bearer ' + token?.token
         }),
     })
     const album = await data.json()

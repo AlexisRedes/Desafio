@@ -18,11 +18,11 @@ const Card = styled.div`
     }
 `;
 
-const Artistas = ({ id }) => {
+const Artistas = ({ id ,token}) => {
 
     const [api, setApi] = useState();
     useEffect(async () => {
-        const artistas = await obetenerArtistas(id)
+        const artistas = await obetenerArtistas(id, token)
         // obtenerAlbunes(api?.name)
 
         setApi(artistas)

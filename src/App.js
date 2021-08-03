@@ -4,6 +4,7 @@ import Home from './pages/home';
 import Buscador from './components/buscador';
 import Detalles from './pages/detalles';
 import Header from './components/header';
+import Auth from './components/auth';
 import css from './App.css'
 import {
   BrowserRouter as Router,
@@ -36,6 +37,11 @@ const ContenedorIndex1 = styled.div`
 
 function App() {
 
+  const [venrificacion, setVerificacion] = useState(false)
+  const [habilitaciones, setHabilitaciones] =useState(false)
+  const [token, setToken] = useState({
+    token:''
+  })
   const [busqueda, setBusqueda] = useState({
     busqueda:''
   });
@@ -54,7 +60,7 @@ function App() {
       <Switch>
         <ContenedorPrincipal>
 
-        <ContenedorIndex1>
+        {habilitaciones ?<ContenedorIndex1>
           <Header
               busqueda={busqueda} 
               setBusqueda={setBusqueda} 
@@ -62,20 +68,35 @@ function App() {
               setIdArtistas={setIdArtistas}
               error={error}
               setError={setError}
+              token={token}
             />
 
-        </ContenedorIndex1>
+        </ContenedorIndex1>: null}
 
 
           <div className='p-5 container d-flex justify-content-center align-items-center h-100'>
             <Route path='/' exact>
-              <Home artistasPrincipales={idArtistas}/>
+              <Auth 
+                token={token}
+                setToken={setToken}
+                setVerificacion={setVerificacion}
+              />
+            </Route>
+            <Route path='/home' exact>
+              <Home 
+              artistasPrincipales={idArtistas} 
+              token={token}
+              venrificacion={venrificacion}
+              setHabilitaciones={setHabilitaciones}
+              />
             </Route>
             <Route path='/buscar' exact>
               <Buscador />
             </Route>
             <Route path='/detalle/:id' exact>
-              <Detalles />
+              <Detalles token={token}
+                        venrificacion={venrificacion}
+              />
             </Route>
           </div>
 

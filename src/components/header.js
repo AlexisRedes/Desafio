@@ -18,14 +18,14 @@ const ContenedorHeader = styled.header`
 
 
 
-const Header = ({busqueda, idArtistas, setBusqueda, setIdArtistas,error,setError}) =>{
+const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,token}) =>{
 
     
     const onChange = async e=>{
         e.persist()
         e.preventDefault()
         await setBusqueda({busqueda: e.target.value}) 
-        const artistas= await buscarArtista(busqueda?.busqueda);
+        const artistas= await buscarArtista(busqueda?.busqueda,token);
         const ids = mapeo(artistas?.artists?.items)
         setIdArtistas(ids)
         
@@ -62,7 +62,7 @@ const Header = ({busqueda, idArtistas, setBusqueda, setIdArtistas,error,setError
         <ContenedorHeader className='position-fixed'>
             <div className='container'>
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <Link to='/'>
+                <Link to='/home'>
                   <img src={logo} width="190" height="60" className='c-light'></img>
                 </Link>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
