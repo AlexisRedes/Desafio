@@ -6,6 +6,7 @@ import Buscador from './components/buscador';
 import Detalles from './pages/detalles';
 import Header from './components/header';
 import Auth from './components/auth';
+import NotFound from './components/pageNotFount';
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -77,19 +78,9 @@ function App() {
 
           <div className='p-5 container d-flex justify-content-center align-items-center h-100'>
             <div className='p-5'>
-            
 
-                  <Route path='/' exact>
-                  <Auth 
-                  setAcceso={setAcceso}
-                  ingreso={ingreso}
-                  setIngreso={setIngreso}
-                  habilitacion={habilitacion}
-                  />
-                  </Route>
-                   
-                   
-                  <Route path='/home' exact>
+            <Switch>
+              <Route exact path='/home' >
                   <Home 
                     acceso={acceso}
                     setHabilitacion={setHabilitacion}
@@ -97,24 +88,34 @@ function App() {
                     /></Route>
             
             
-            <Route path='/buscar' exact>
+            <Route exact path='/buscar' >
               <Buscador />
             </Route>
-            <Route path='/detalle/:id' exact>
+            <Route exact path='/detalle/:id' >
               <Detalles 
                 acceso={acceso}
                 setHabilitacion={setHabilitacion}
               />
             </Route>
-    
-            <Route exact insecure>
-             <Redirect to='/'/></Route>
+
+            
+            <Route exact path='/' >
+                  <Auth 
+                  setAcceso={setAcceso}
+                  ingreso={ingreso}
+                  setIngreso={setIngreso}
+                  habilitacion={habilitacion}
+                  />
+                  </Route>
+              <Route path='/*' component={NotFound}/>
+            </Switch>
             </div>
             
           </div>
-
+          
           
         </ContenedorPrincipal>
+        
       </Switch>
     </Router>
   );
