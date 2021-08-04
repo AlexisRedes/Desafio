@@ -10,6 +10,7 @@ const Home = ({artistasPrincipales,setHabilitacion}) => {
         console.log(window.localStorage.getItem('token'))
         if(window.localStorage.getItem('token')===''){
             setNewAcces(false)
+            setHabilitacion(false)
         }
         else{
             setHabilitacion(true)

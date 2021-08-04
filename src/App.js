@@ -40,7 +40,7 @@ const ContenedorIndex1 = styled.div`
 function App() {
   const [ingreso, setIngreso] = useState(true)
   const [acceso, setAcceso] = useState();
-  const [habilitacion, setHabilitacion] = useState();
+  const [habilitacion, setHabilitacion] = useState(false);
 
   const [busqueda, setBusqueda] = useState({
     busqueda:''
@@ -84,6 +84,7 @@ function App() {
                   setAcceso={setAcceso}
                   ingreso={ingreso}
                   setIngreso={setIngreso}
+                  habilitacion={habilitacion}
                   />
                   </Route>
                    
@@ -107,10 +108,7 @@ function App() {
             </Route>
     
             <Route exact insecure>
-             <Redirect to='/home'/>
-
-
-             </Route>
+             <Redirect to='/'/></Route>
             </div>
             
           </div>
