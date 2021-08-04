@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {Link } from "react-router-dom";
+import {Link, Redirect } from "react-router-dom";
 import isValid from '../utils/verificador';
 import imagen from '../image/image2.png'
 
@@ -19,6 +19,7 @@ const Auth = ({setAcceso,ingreso,setIngreso}) => {
     }
 
     useEffect(()=>{
+        // window.localStorage.setItem('token','')
         if(window.localStorage.getItem('token') !=''){
             setIngreso(false)
         }
@@ -54,7 +55,7 @@ const Auth = ({setAcceso,ingreso,setIngreso}) => {
             </form>
 
             </div>
-            :<p>Usted ya ah ingresado el token</p>}
+            :<Redirect to='/home'/>}
             
             
         </div>

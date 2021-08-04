@@ -32,7 +32,7 @@ const Home = ({artistasPrincipales,setHabilitacion}) => {
                     )
                 }
                 </div>
-            </div> : <h1 className="alert alert-danger">Usted no tiene acceso a esta pagina</h1>
+            </div> : <h1 className="alert alert-danger">Usted no tiene acceso a esta pagina, verifique su token</h1>
             }
 
         </div>

@@ -76,21 +76,24 @@ function App() {
 
           <div className='p-5 container d-flex justify-content-center align-items-center h-100'>
             <div className='p-5'>
-            <Route path='/' exact>
-              <Auth 
-               setAcceso={setAcceso}
-               ingreso={ingreso}
-               setIngreso={setIngreso}
-              />
-            </Route>
-            <Route path='/home' exact>
-              <Home 
-              acceso={acceso}
-              setHabilitacion={setHabilitacion}
-              artistasPrincipales={idArtistas} 
-              
-              />
-            </Route>
+            
+                  <Route path='/' exact>
+                  <Auth 
+                  setAcceso={setAcceso}
+                  ingreso={ingreso}
+                  setIngreso={setIngreso}
+                  />
+                  </Route>
+                   
+                   
+                  <Route path='/home' exact>
+                  <Home 
+                    acceso={acceso}
+                    setHabilitacion={setHabilitacion}
+                    artistasPrincipales={idArtistas} 
+                    /></Route>
+            
+            
             <Route path='/buscar' exact>
               <Buscador />
             </Route>
