@@ -11,6 +11,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 
 const artistasPrincipales = [
@@ -77,6 +78,7 @@ function App() {
           <div className='p-5 container d-flex justify-content-center align-items-center h-100'>
             <div className='p-5'>
             
+
                   <Route path='/' exact>
                   <Auth 
                   setAcceso={setAcceso}
@@ -103,8 +105,12 @@ function App() {
                 setHabilitacion={setHabilitacion}
               />
             </Route>
+    
+            <Route exact insecure>
+             <Redirect to='/home'/>
 
 
+             </Route>
             </div>
             
           </div>

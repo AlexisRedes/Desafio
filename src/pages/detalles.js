@@ -24,6 +24,9 @@ const Detalles = ({setHabilitacion}) => {
                 setNewAcces(true)
             }
             const artista =await obtenerArtistas(id);
+            if(artista=== undefined){
+                return setNewAcces(false)
+            }
             setArtista(artista)
             const albums = await obtenerAlbums(artista?.name)
             setAlbums(albums);
