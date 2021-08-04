@@ -12,6 +12,7 @@ const Detalles = ({token,venrificacion}) => {
     const {id} = useParams();
 
     useEffect(async()=>{
+        window.scroll(0,0)
         try{
             const artista =await obtenerArtistas(id,token);
             setArtista(artista)

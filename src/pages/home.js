@@ -6,6 +6,7 @@ import Artistas from '../components/artistas'
 const Home = ({artistasPrincipales, token, venrificacion,setHabilitaciones}) => {
     
     useEffect(()=>{
+        window.scroll(0,0)
         if(venrificacion){
             setHabilitaciones(true)
         }
