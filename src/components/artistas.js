@@ -20,11 +20,11 @@ const MyH5 = styled.h5`
     font-size: 1.5em;
 `;
 
-const Artistas = ({ id ,token}) => {
+const Artistas = ({ id }) => {
 
     const [api, setApi] = useState();
     useEffect(async () => {
-        const artistas = await obetenerArtistas(id, token)
+        const artistas = await obetenerArtistas(id)
         // obtenerAlbunes(api?.name)
 
         setApi(artistas)

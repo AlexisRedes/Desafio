@@ -4,9 +4,10 @@ import obtenerAlbums from '../api/obtenerAlbums';
 import obtenerArtistas from '../api/obetenerArtistas';
 import SimplePopover from '../components/popover';
 
+const Detalles = ({setHabilitacion}) => {
 
-const Detalles = ({token,venrificacion}) => {
-
+    const [newAcces, setNewAcces] = useState(true);
+   
     const [artista, setArtista] = useState()
     const [albums, setAlbums] = useState();
     const {id} = useParams();
@@ -14,9 +15,17 @@ const Detalles = ({token,venrificacion}) => {
     useEffect(async()=>{
         window.scroll(0,0)
         try{
-            const artista =await obtenerArtistas(id,token);
+            if(window.localStorage.getItem('token')===''){
+                setNewAcces(false)
+                setHabilitacion(false)
+            }
+            else{
+                setHabilitacion(true)
+                setNewAcces(true)
+            }
+            const artista =await obtenerArtistas(id);
             setArtista(artista)
-            const albums = await obtenerAlbums(artista?.name,token)
+            const albums = await obtenerAlbums(artista?.name)
             setAlbums(albums);
         }
         catch(error){
@@ -29,7 +38,7 @@ const Detalles = ({token,venrificacion}) => {
 
     return (
        <>
-            {venrificacion? <div className='container  mt-5'>
+            {newAcces ? <div className='container  mt-5'>
             <div className='row'>
                 <div className='col mt-5'>
                         <div className='container d-flex justify-content-center h-100'>

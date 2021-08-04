@@ -1,28 +1,32 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 // import styled from '@emotion/styled';
 import Artistas from '../components/artistas'
 
-
-const Home = ({artistasPrincipales, token, venrificacion,setHabilitaciones}) => {
+const Home = ({artistasPrincipales,setHabilitacion}) => {
     
-    useEffect(()=>{
+    const [newAcces, setNewAcces] = useState(true);
+    useEffect(async()=>{
         window.scroll(0,0)
-        if(venrificacion){
-            setHabilitaciones(true)
+        console.log(window.localStorage.getItem('token'))
+        if(window.localStorage.getItem('token')===''){
+            setNewAcces(false)
         }
-         
+        else{
+            setHabilitacion(true)
+            setNewAcces(true)
+        }      
     },[])
 
 
     return (
         
         <div className='container'>
-            {venrificacion ? <div className='container d-flex justify-content-center align-items-center h-100'>
+            {newAcces ? <div className='container d-flex justify-content-center align-items-center h-100'>
                 <div className='row p-5'>
                 {
                     artistasPrincipales?.map(artista => (
                         <div className='col-md-3 p-2'>
-                            <Artistas id={artista} token={token}/>
+                            <Artistas id={artista}/>
                         </div>
                     )
                     )

@@ -1,27 +1,33 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {Link } from "react-router-dom";
 import isValid from '../utils/verificador';
 import imagen from '../image/image2.png'
 
-const Auth = ({setToken,setVerificacion}) => {
+const Auth = ({setAcceso,ingreso,setIngreso}) => {
 
-    var token = ''
+    var token = '';
     
+
     const onChange = async e =>{
         token = e.target.value
         const validacion = await isValid(token)
-        setVerificacion(validacion?.acceso)
-        setToken({
-            token
-        })
+        console.log(validacion)
+        if(validacion?.acceso){
+            setAcceso(validacion?.acceso)
+            window.localStorage.setItem('token',token)
+        }
     }
+
+    useEffect(()=>{
+        if(window.localStorage.getItem('token') !=''){
+            setIngreso(false)
+        }
+
+    },[])
 
 
     const handleSubmit=(e)=>{
         e?.preventDefault()
-        setToken({
-            token
-        })
     }
 
 
@@ -29,6 +35,7 @@ const Auth = ({setToken,setVerificacion}) => {
 
         <div className='container pt-5 h-100'>
             
+            {ingreso?
             <div className='container d-flex justify-content-center align-items-center h-100 overflow-hidden p-2'>
             <img src={imagen} width="200" height="180" className='p-1 rounded-circle'></img>
             <form 
@@ -47,6 +54,8 @@ const Auth = ({setToken,setVerificacion}) => {
             </form>
 
             </div>
+            :<p>Usted ya ah ingresado el token</p>}
+            
             
         </div>
 

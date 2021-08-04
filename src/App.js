@@ -37,12 +37,10 @@ const ContenedorIndex1 = styled.div`
 `;
 
 function App() {
+  const [ingreso, setIngreso] = useState(true)
+  const [acceso, setAcceso] = useState();
+  const [habilitacion, setHabilitacion] = useState();
 
-  
-  const [habilitaciones, setHabilitaciones] =useState()
-  const [token, setToken] = useState({
-    token:''
-  })
   const [busqueda, setBusqueda] = useState({
     busqueda:''
   });
@@ -54,7 +52,6 @@ function App() {
     console.log(idArtistas)
 
   },[])
-  const [venrificacion, setVerificacion] = useState()
 
   return (
 
@@ -62,7 +59,7 @@ function App() {
       <Switch>
         <ContenedorPrincipal>
 
-        {habilitaciones ?<ContenedorIndex1>
+        {habilitacion ?<ContenedorIndex1>
           <Header
               busqueda={busqueda} 
               setBusqueda={setBusqueda} 
@@ -70,7 +67,8 @@ function App() {
               setIdArtistas={setIdArtistas}
               error={error}
               setError={setError}
-              token={token}
+              setHabilitacion={setHabilitacion}
+              setIngreso={setIngreso}
             />
 
         </ContenedorIndex1>: null}
@@ -80,25 +78,26 @@ function App() {
             <div className='p-5'>
             <Route path='/' exact>
               <Auth 
-                token={token}
-                setToken={setToken}
-                setVerificacion={setVerificacion}
+               setAcceso={setAcceso}
+               ingreso={ingreso}
+               setIngreso={setIngreso}
               />
             </Route>
             <Route path='/home' exact>
               <Home 
+              acceso={acceso}
+              setHabilitacion={setHabilitacion}
               artistasPrincipales={idArtistas} 
-              token={token}
-              venrificacion={venrificacion}
-              setHabilitaciones={setHabilitaciones}
+              
               />
             </Route>
             <Route path='/buscar' exact>
               <Buscador />
             </Route>
             <Route path='/detalle/:id' exact>
-              <Detalles token={token}
-                        venrificacion={venrificacion}
+              <Detalles 
+                acceso={acceso}
+                setHabilitacion={setHabilitacion}
               />
             </Route>
 

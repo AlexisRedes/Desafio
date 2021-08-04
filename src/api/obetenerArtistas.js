@@ -1,13 +1,14 @@
 
-const obtenerArtistas = async (id, token) => {
+const obtenerArtistas = async (id) => {
     
     const data = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
         method: 'GET',
         headers: new Headers({
-            'Authorization': 'Bearer ' + token?.token
+            'Authorization': 'Bearer ' + window.localStorage.getItem('token')
         }),
     })
     const artista = await data.json()
+   try{
     const sigleartist = {
         id:artista?.id,
         name: artista?.name,
@@ -16,8 +17,11 @@ const obtenerArtistas = async (id, token) => {
         popularity: artista?.popularity,
         genres: artista?.genres
     }
-
     return sigleartist
+   }
+    catch(error){
+        console.log(error)
+    }
 
 }
 

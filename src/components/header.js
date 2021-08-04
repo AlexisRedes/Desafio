@@ -18,14 +18,24 @@ const ContenedorHeader = styled.header`
 
 
 
-const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,token}) =>{
+const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,setHabilitacion,setIngreso}) =>{
 
     
+    const cerrarSesion = ()=>{
+      setHabilitacion(false)
+      setIngreso(true)
+      return window.localStorage.setItem('token','')
+      
+
+    }
+
+
+
     const onChange = async e=>{
         e.persist()
         e.preventDefault()
         await setBusqueda({busqueda: e.target.value}) 
-        const artistas= await buscarArtista(busqueda?.busqueda,token);
+        const artistas= await buscarArtista(busqueda?.busqueda);
         const ids = mapeo(artistas?.artists?.items)
         setIdArtistas(ids)
         
@@ -68,7 +78,7 @@ const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,token}) =>{
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                   
                 </ul>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+                <form class="col-12 col-lg-auto mt-3 mb-lg-0 me-lg-3"
                       onSubmit={(e)=> handleSubmit(e)}
                 >
                     <input 
@@ -81,9 +91,27 @@ const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,token}) =>{
                       />
                       <p className='text-danger'>{error ? error: ''}</p>
                 </form>
-                <div class="text-end">
+                <div className='class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"'>
+                  <Link to='/'>
                     
+                      <button
+                          onClick={e =>cerrarSesion(e)}
+                          type='button'
+                          className='btn btn-outline-light'
+                        >
+                          Cerrar Sesion
+                      </button>
+                      
+                  
+                  
+                  </Link>
+                 
+
                 </div>
+                
+                      
+                
+                
               </div>
             </div>
         </ContenedorHeader>
