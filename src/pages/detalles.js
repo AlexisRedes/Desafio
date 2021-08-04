@@ -33,11 +33,11 @@ const Detalles = ({token,venrificacion}) => {
             <div className='row'>
                 <div className='col mt-5'>
                         <div className='container d-flex justify-content-center h-100'>
-                            <img src={artista?.photo} width="305" height="320"></img>
+                            <img src={artista?.photo} width="300" height="320" className='p-2'></img>
                             <div className='card-body text-light'>
-                                <h1 className='card-body text-light'>{artista?.name}</h1>
-                                <h2 className='card-body text-light'>followers: {artista?.followers}</h2>
-                                <h2 className='card-body text-light'>popularity: {artista?.popularity}</h2>
+                                <h1 className='card-body text-light p-2'>{artista?.name}</h1>
+                                <h2 className='card-body text-light p-2'>followers: {artista?.followers}</h2>
+                                <h2 className='card-body text-light p-2'>popularity: {artista?.popularity}</h2>
                                 <div>
                                         <a href={`https://open.spotify.com/artist/${artista?.id}`} target="_blank">
                                             <h4 className="text-light btn btn-dark" >Abrir en Spotify</h4>
@@ -56,7 +56,7 @@ const Detalles = ({token,venrificacion}) => {
                                     albums?.albums?.items?.map(item=>(
                                     <>   
                                             <a href={item?.external_urls.spotify} target="_blank" className='text-decoration-none'>
-                                                <h4 className="text-light" >{item.name}</h4>
+                                                <h4 className="text-light p-2" >{item.name}</h4>
                                             </a> 
                                     </>
                                     ))

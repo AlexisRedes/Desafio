@@ -28,6 +28,7 @@ const ContenedorPrincipal = styled.div`
   flex: 1;
   position: relative;
   height: 100%;
+
 `;
 
 const ContenedorIndex1 = styled.div`
@@ -76,6 +77,7 @@ function App() {
 
 
           <div className='p-5 container d-flex justify-content-center align-items-center h-100'>
+            <div className='p-5'>
             <Route path='/' exact>
               <Auth 
                 token={token}
@@ -99,6 +101,10 @@ function App() {
                         venrificacion={venrificacion}
               />
             </Route>
+
+
+            </div>
+            
           </div>
 
           

@@ -59,7 +59,7 @@ const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,token}) =>{
 
 
     return(
-        <ContenedorHeader className='position-fixed'>
+        <ContenedorHeader className='position-fixed '>
             <div className='container'>
               <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <Link to='/home'>

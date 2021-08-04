@@ -16,6 +16,9 @@ const Card = styled.div`
         box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
     }
 `;
+const MyH5 = styled.h5`
+    font-size: 1.5em;
+`;
 
 const Artistas = ({ id ,token}) => {
 
@@ -35,7 +38,7 @@ const Artistas = ({ id ,token}) => {
                     <img src={api?.photo} width="200" height="180" className='p-2 rounded-circle'></img>
                 </div>
                 <div className='card-body text-light '>
-                        <h5 className='card-title'>{api?.name}</h5>
+                        <MyH5 className='card-title text-center text-nowrap overflow-hidden'>{api?.name}</MyH5>
                 </div>
             </Card>
         </Link>

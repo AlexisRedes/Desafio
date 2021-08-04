@@ -28,10 +28,10 @@ const Auth = ({setToken,setVerificacion}) => {
     return (
 
         <div className='container pt-5 h-100'>
+            
             <div className='container d-flex justify-content-center align-items-center h-100 overflow-hidden p-2'>
             <img src={imagen} width="200" height="180" className='p-1 rounded-circle'></img>
-            <form
-                class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" 
+            <form 
                 onSubmit={(e)=> handleSubmit(e)}
                 >
                 <input  
