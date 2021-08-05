@@ -1,12 +1,13 @@
 html,
 body {
-  background: rgb(153, 153, 153);
+  background: rgb(164, 164, 164);
   background: linear-gradient(
     180deg,
-    rgba(153, 153, 153, 1) 0%,
-    rgba(79, 79, 79, 1) 47%,
-    rgba(0, 0, 0, 1) 100%
+    rgba(164, 164, 164, 1) 0%,
+    rgb(80, 79, 79) 35%,
+    rgba(23, 23, 23, 1) 81%
   );
+  background-size: 100%;
   background-attachment: fixed;
   background-size: contain !important;
 }

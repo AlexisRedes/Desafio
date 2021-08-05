@@ -3,6 +3,16 @@ import { useParams } from 'react-router-dom';
 import obtenerAlbums from '../api/obtenerAlbums';
 import obtenerArtistas from '../api/obetenerArtistas';
 import SimplePopover from '../components/popover';
+import isValid from '../utils/verificador';
+import styled from '@emotion/styled';
+
+
+const MyImg = styled.img`
+    filter: drop-shadow(10px 5px 5px black);
+    margin-top: 1rem;
+        
+`;
+
 
 const Detalles = ({setHabilitacion}) => {
 
@@ -15,6 +25,11 @@ const Detalles = ({setHabilitacion}) => {
     useEffect(async()=>{
         window.scroll(0,0)
         try{
+            const valid = await isValid(window.localStorage.getItem('token'))
+            if(valid?.acceso){
+                console.log("holsssssssssssssssssa")
+                setNewAcces(false)
+            }
             if(window.localStorage.getItem('token')===''){
                 setNewAcces(false)
                 setHabilitacion(false)
@@ -27,8 +42,13 @@ const Detalles = ({setHabilitacion}) => {
             if(artista=== undefined){
                 return setNewAcces(false)
             }
+            
             setArtista(artista)
             const albums = await obtenerAlbums(artista?.name)
+            console.log(albums)
+            if(albums.albums===undefined){
+                setNewAcces(false)
+            }
             setAlbums(albums);
         }
         catch(error){
@@ -41,11 +61,11 @@ const Detalles = ({setHabilitacion}) => {
 
     return (
        <>
-            {newAcces ? <div className='container  mt-5'>
+            {newAcces ? <div className='mt-5'>
             <div className='row'>
                 <div className='col '>
-                        <div className='container d-flex justify-content-center h-100 p-2 mt-5'>
-                            <img src={artista?.photo} width="300" height="320" className='p-2'></img>
+                        <div className='container d-flex justify-content-center h-100 '>
+                            <MyImg src={artista?.photo} width="300" height="320"></MyImg>
                             <div className='card-body text-light'>
                                 <h1 className='card-body text-light p-2'>{artista?.name}</h1>
                                 <h2 className='card-body text-light p-2'>followers: {artista?.followers}</h2>
@@ -62,7 +82,7 @@ const Detalles = ({setHabilitacion}) => {
                         </div>
                 </div>
                     <div className='container p-5'>
-                        <div className='container p-5'>
+                        <div className='p-5'>
                             <h1 className="text-light p-5">Álbumes</h1>
                                 {
                                     albums?.albums?.items?.map(item=>(
@@ -77,7 +97,7 @@ const Detalles = ({setHabilitacion}) => {
                 </div>
                 
             </div>
-        </div>:<h1 class="alert alert-danger">Usted no tiene acceso a esta pagina</h1>}
+        </div>:<h1 class="alert alert-danger">Usted no tiene acceso a esta pagina, verifique el token</h1>}
        </>
         
     )

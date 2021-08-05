@@ -29,7 +29,7 @@ const artistasPrincipales = [
 const ContenedorPrincipal = styled.div`
   flex: 1;
   position: relative;
-  height: 100%;
+  
 
 `;
 
@@ -38,11 +38,15 @@ const ContenedorIndex1 = styled.div`
   z-index:1;
 `;
 
+const Margin = styled.div`
+  margin-top: 9em;
+`;
+
 function App() {
   const [ingreso, setIngreso] = useState(true)
   const [acceso, setAcceso] = useState();
   const [habilitacion, setHabilitacion] = useState(false);
-
+  const [mensajeAuht, setmensajeAuht] = useState(false)
   const [busqueda, setBusqueda] = useState({
     busqueda:''
   });
@@ -76,8 +80,8 @@ function App() {
         </ContenedorIndex1>: null}
 
 
-          <div className='p-5 container d-flex justify-content-center align-items-center h-100'>
-            <div className='p-5'>
+          <div className='container d-flex justify-content-center align-items-center'>
+            <Margin>
 
             <Switch>
               <Route exact path='/home' >
@@ -92,7 +96,10 @@ function App() {
 
             
             <Route exact path='/' >
-                  <Auth 
+                  <Auth
+                  setHabilitacion={setHabilitacion}
+                  setmensajeAuht={setmensajeAuht}
+                  mensajeAuht={mensajeAuht}
                   setAcceso={setAcceso}
                   ingreso={ingreso}
                   setIngreso={setIngreso}
@@ -101,7 +108,7 @@ function App() {
                   </Route>
               <Route path='/*' component={NotFound}/>
             </Switch>
-            </div>
+            </Margin>
             
           </div>
           

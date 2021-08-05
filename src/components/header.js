@@ -5,13 +5,11 @@ import logo from '../image/imagen.png'
 import buscarArtista from '../api/buscarArtista';
 
 const ContenedorHeader = styled.header`
-  flex: 1;
-  flex-direction: row;
   background-color: rgba(0, 0, 0, 0.6);
   width:100%;
-  padding: 0.5rem;
   font-weight: bold;
   color: #ffffff;
+  padding:0.1rem;
   text-decoration: none;
   
 `;
@@ -71,14 +69,14 @@ const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,setHabilita
     return(
         <ContenedorHeader className='position-fixed '>
             <div className='container'>
-              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <Link to='/home'>
                   <img src={logo} width="190" height="60" className='c-light'></img>
                 </Link>
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                   
                 </ul>
-                <form class="col-12 col-lg-auto mt-3 mb-lg-0 me-lg-3"
+                <form className="col-12 col-lg-auto mt-3 mb-lg-0 me-lg-3"
                       onSubmit={(e)=> handleSubmit(e)}
                 >
                     <input 
@@ -89,19 +87,21 @@ const Header = ({busqueda, setBusqueda, setIdArtistas,error,setError,setHabilita
                       value={busqueda.busqueda}
                       onChange={onChange}
                       />
+
+                      
                       <p className='text-danger'>{error ? error: ''}</p>
                 </form>
                 <div className='class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"'>
                   <Link to='/'>
                     
-                      <button
+                      
+                  <button
                           onClick={e =>cerrarSesion(e)}
                           type='button'
                           className='btn btn-outline-light'
                         >
                           Cerrar Sesion
                       </button>
-                      
                   
                   
                   </Link>

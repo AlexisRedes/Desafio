@@ -13,10 +13,9 @@ const obtenerAlbums = async (nombre) => {
         }),
     })
     const album = await data.json()
-    
-
+        
     return album
-
+  
 }
 
 export default obtenerAlbums;

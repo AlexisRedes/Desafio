@@ -1,6 +1,8 @@
 const isValid = async (token) =>{
 
-    const data = await fetch(`https://api.spotify.com/v1/search?q=michel&type=artist`, {
+    
+    console.log(token)
+    const data = await fetch(`https://api.spotify.com/v1/search?q=duki&type=artist`, {
         method: 'GET',
         headers: new Headers({
             'Authorization': 'Bearer ' + token
@@ -8,7 +10,8 @@ const isValid = async (token) =>{
     })
 
     const artista = await data.json()
-    if(artista.error?.status === 401){
+    console.log(artista)
+    if(artista.error?.status >= 400){
         console.log(artista?.error?.message)
         return {
             message:console.log(artista?.error?.message),
