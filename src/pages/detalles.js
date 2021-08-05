@@ -43,14 +43,14 @@ const Detalles = ({setHabilitacion}) => {
        <>
             {newAcces ? <div className='container  mt-5'>
             <div className='row'>
-                <div className='col mt-5'>
-                        <div className='container d-flex justify-content-center h-100'>
+                <div className='col '>
+                        <div className='container d-flex justify-content-center h-100 p-2 mt-5'>
                             <img src={artista?.photo} width="300" height="320" className='p-2'></img>
                             <div className='card-body text-light'>
                                 <h1 className='card-body text-light p-2'>{artista?.name}</h1>
                                 <h2 className='card-body text-light p-2'>followers: {artista?.followers}</h2>
                                 <h2 className='card-body text-light p-2'>popularity: {artista?.popularity}</h2>
-                                <div>
+                                <div className=''>
                                         <a href={`https://open.spotify.com/artist/${artista?.id}`} target="_blank">
                                             <h4 className="text-light btn btn-dark" >Abrir en Spotify</h4>
                                         </a>
@@ -61,9 +61,9 @@ const Detalles = ({setHabilitacion}) => {
                     
                         </div>
                 </div>
-                    <div className='container'>
-                        <div className='container mt-5'>
-                            <h1 className="text-light">Álbumes</h1>
+                    <div className='container p-5'>
+                        <div className='container p-5'>
+                            <h1 className="text-light p-5">Álbumes</h1>
                                 {
                                     albums?.albums?.items?.map(item=>(
                                     <>   

@@ -81,16 +81,8 @@ function App() {
 
             <Switch>
               <Route exact path='/home' >
-                  <Home 
-                    acceso={acceso}
-                    setHabilitacion={setHabilitacion}
-                    artistasPrincipales={idArtistas} 
-                    /></Route>
+                  <Home acceso={acceso} setHabilitacion={setHabilitacion} artistasPrincipales={idArtistas}/></Route>
             
-            
-            <Route exact path='/buscar' >
-              <Buscador />
-            </Route>
             <Route exact path='/detalle/:id' >
               <Detalles 
                 acceso={acceso}

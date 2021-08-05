@@ -21,8 +21,8 @@ const Home = ({artistasPrincipales,setHabilitacion}) => {
 
     return (
         
-        <div className='container'>
-            {newAcces ? <div className='container d-flex justify-content-center align-items-center h-100'>
+        <div className='container p-5'>
+            {newAcces ? <div className='container d-flex justify-content-center align-items-center h-100 p-4'>
                 <div className='row p-5'>
                 {
                     artistasPrincipales?.map(artista => (
